@@ -1,5 +1,5 @@
 image:
-  repository: currency-converter
+  repository: repository/currency-converter
   tag: "latest"
 
 app:

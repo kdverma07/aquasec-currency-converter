@@ -19,7 +19,7 @@ This project implements a Python FastAPI microservice for real-time currency con
 docker build -t currency-converter .
 docker run -d -p 8000:8000 -e OPENEXCHANGERATES_APP_ID=your_real_api_key currency-converter # Replace your_real_api_key with the api_key
 
-Access at: http://localhost:8000/convert?from=USD&to=INR&amount=100
+Access at: http://localhost:8000/
 
 2. CI/CD Pipeline
 
@@ -29,7 +29,7 @@ Builds Docker image and pushes to Docker Hub.
 
 Lints Helm chart.
 
-Required GitHub Secrets
+#Required GitHub Secrets
 Secret	Description
 DOCKERHUB_USERNAME	Docker Hub username
 DOCKERHUB_TOKEN	        Docker Hub access token
@@ -38,7 +38,11 @@ DOCKERHUB_TOKEN	        Docker Hub access token
 
 helm install currency-converter ./helm/currency-converter \
   --set image.repository=kdverma07/currency-converter \
-  --set image.tag=latest
+  --set image.tag=latest \
+  --set app.appId=APP_ID
+
+#Required 
+APP_ID needs to be replaced with the app_id of https://openexchangerates.org/account/app-ids
 
 4. Terraform Infrastructure
 
@@ -46,4 +50,8 @@ cd terraform
 terraform init
 terraform plan
 terraform apply
-Outputs include the EKS cluster endpoint and kubeconfig command.
+Outputs include the EKS cluster endpoint.
+
+#Required
+Make sure Login is done with Access key and Secret access key of the user having enough permission to be able to create all terraform resources.
+Also while running via terraform to deploy helm chart, make sure values file is correctly updated with all values.
