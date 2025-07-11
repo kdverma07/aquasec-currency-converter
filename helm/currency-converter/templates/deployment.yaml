@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "currency-converter.fullname" . }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ include "currency-converter.fullname" . }}
+  template:
+    metadata:
+      labels:
+        app: {{ include "currency-converter.fullname" . }}
+    spec:
+      containers:
+        - name: currency-converter
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          ports:
+            - containerPort: 8000
+          env:
+            - name: OPENEXCHANGERATES_APP_ID
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "currency-converter.fullname" . }}-secret
+                  key: OPENEXCHANGERATES_APP_ID

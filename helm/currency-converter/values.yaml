@@ -1,0 +1,10 @@
+image:
+  repository: currency-converter
+  tag: "latest"
+
+app:
+  appId: "your_real_api_key_here"
+
+service:
+  type: ClusterIP
+  port: 8000
