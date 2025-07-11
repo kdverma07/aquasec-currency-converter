@@ -37,7 +37,7 @@ DOCKERHUB_TOKEN	        Docker Hub access token
 3. Helm Deployment
 
 helm install currency-converter ./helm/currency-converter \
-  --set image.repository=yourdockerhubusername/currency-converter \
+  --set image.repository=kdverma07/currency-converter \
   --set image.tag=latest
 
 4. Terraform Infrastructure
