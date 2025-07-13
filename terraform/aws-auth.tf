@@ -3,15 +3,16 @@ module "eks-auth" {
   version = "~> 20.0"
   manage_aws_auth_configmap = true
 
-    aws_auth_roles = [
+  aws_auth_roles = [
     {
-      rolearn  = "arn:aws:iam::account-id:role/AWSReservedSSO_Devops"
-      username = "Devops"
+      rolearn  = "arn:aws:iam::account-id:role/role-name"
+      username = "admin"
       groups   = ["system:masters"]
     }
   ]
 
-  aws_auth_users = []
-
+  aws_auth_users    = []
   aws_auth_accounts = []
+
+  depends_on = [module.eks]
 }

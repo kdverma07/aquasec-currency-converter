@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "currency-converter.fullname" . }}
+  name: currency-converter
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: {{ include "currency-converter.fullname" . }}
+      app: currency-converter
   template:
     metadata:
       labels:
-        app: {{ include "currency-converter.fullname" . }}
+        app: currency-converter
     spec:
       containers:
         - name: currency-converter
@@ -23,3 +23,4 @@ spec:
                 secretKeyRef:
                   name: {{ include "currency-converter.fullname" . }}-secret
                   key: OPENEXCHANGERATES_APP_ID
+

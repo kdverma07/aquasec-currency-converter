@@ -55,3 +55,8 @@ Outputs include the EKS cluster endpoint.
 #Required
 Make sure Login is done with Access key and Secret access key of the user having enough permission to be able to create all terraform resources.
 Also while running via terraform to deploy helm chart, make sure values file is correctly updated with all values.
+
+To Verify service run below command
+kubectl port-forward svc/currency-converter 8000:80 -n currency-converter
+
+And access the GUI at http://localhost:8000/

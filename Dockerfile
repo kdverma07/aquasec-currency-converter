@@ -6,8 +6,9 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy app code
-COPY . .
+# Copy app code specifically
+COPY app/main.py ./main.py
+COPY app/templates ./templates
 
 # Expose port
 EXPOSE 8000
@@ -18,3 +19,4 @@ USER appuser
 
 # Command to run the app
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+

@@ -1,9 +1,9 @@
 image:
-  repository: repository/currency-converter
+  repository: kdverma07/currency-converter
   tag: "latest"
 
 app:
-  appId: "your_real_api_key_here"
+  appId: "keyId"
 
 service:
   type: ClusterIP
